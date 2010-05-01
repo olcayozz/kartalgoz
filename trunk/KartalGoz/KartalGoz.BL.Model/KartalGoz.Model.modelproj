@@ -6,7 +6,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5714fb82-96be-4a09-8a31-aef4a1f71cbb}</ProjectGuid>
     <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
-    <Name>KartalGoz.BL.Model</Name>
+    <Name>KartalGoz.Model</Name>
     <RootNamespace>KartalGoz.BL.Model</RootNamespace>
     <SccProjectName>Svn</SccProjectName>
     <SccProvider>SubversionScc</SccProvider>
