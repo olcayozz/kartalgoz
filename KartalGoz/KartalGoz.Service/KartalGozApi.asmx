@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="KartalGozApi.asmx.cs" Class="KartalGoz.Service.Service1" %>
