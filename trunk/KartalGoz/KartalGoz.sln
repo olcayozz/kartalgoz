@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access Layer", "Data Access Layer", "{A59CF83A-172E-41A4-A3A1-9636C84FEA01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness Layer", "Bussiness Layer", "{A24BAF88-62AE-40B7-BEBE-FEE4102553FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service Access Layer", "Service Access Layer", "{EC0B9B6B-11FF-412F-AAC3-206AF0CB658D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{0229D74B-BC48-4A96-AFDB-01DF9A256BA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Layer", "Web Layer", "{C40E25A2-9619-48F1-AF22-0593989EB1AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobil Layer", "Mobil Layer", "{7E83B7B6-11FC-468B-9B0F-77B828BC9195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KartalGoz.Service", "KartalGoz.Service\KartalGoz.Service.csproj", "{2AC68F50-39AB-4AED-9093-11ED77986088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KartalGoz.BL", "KartalGoz.BL\KartalGoz.BL.csproj", "{C98C8BB5-C1FF-428A-AE90-4B569ED7571D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KartalGoz.Entity", "KartalGoz.Entity\KartalGoz.Entity.csproj", "{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AC68F50-39AB-4AED-9093-11ED77986088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC68F50-39AB-4AED-9093-11ED77986088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC68F50-39AB-4AED-9093-11ED77986088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC68F50-39AB-4AED-9093-11ED77986088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98C8BB5-C1FF-428A-AE90-4B569ED7571D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98C8BB5-C1FF-428A-AE90-4B569ED7571D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98C8BB5-C1FF-428A-AE90-4B569ED7571D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98C8BB5-C1FF-428A-AE90-4B569ED7571D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5C170BBD-662F-4A40-AAC0-3CAF0DC84FD7} = {A59CF83A-172E-41A4-A3A1-9636C84FEA01}
+		{C98C8BB5-C1FF-428A-AE90-4B569ED7571D} = {A24BAF88-62AE-40B7-BEBE-FEE4102553FF}
+		{2AC68F50-39AB-4AED-9093-11ED77986088} = {EC0B9B6B-11FF-412F-AAC3-206AF0CB658D}
+		{C40E25A2-9619-48F1-AF22-0593989EB1AC} = {0229D74B-BC48-4A96-AFDB-01DF9A256BA9}
+		{7E83B7B6-11FC-468B-9B0F-77B828BC9195} = {0229D74B-BC48-4A96-AFDB-01DF9A256BA9}
+	EndGlobalSection
+EndGlobal

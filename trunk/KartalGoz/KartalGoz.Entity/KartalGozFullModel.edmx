@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KartalGozModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="KartalGozModelStoreContainer">
+          <EntitySet Name="AWBuildVersion" EntityType="KartalGozModel.Store.AWBuildVersion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DatabaseLog" EntityType="KartalGozModel.Store.DatabaseLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="KartalGozModel.Store.ErrorLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FacebookUser" EntityType="KartalGozModel.Store.FacebookUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Friend" EntityType="KartalGozModel.Store.Friend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FriendGroup" EntityType="KartalGozModel.Store.FriendGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group" EntityType="KartalGozModel.Store.Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Location" EntityType="KartalGozModel.Store.Location" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LocationHistory" EntityType="KartalGozModel.Store.LocationHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Meeting" EntityType="KartalGozModel.Store.Meeting" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="KartalGozModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="KartalGozModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFriend" EntityType="KartalGozModel.Store.UserFriend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebUser" EntityType="KartalGozModel.Store.WebUser" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_FacebookUser_User" Association="KartalGozModel.Store.FK_FacebookUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FacebookUser" EntitySet="FacebookUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendGroup_Friend" Association="KartalGozModel.Store.FK_FriendGroup_Friend">
+            <End Role="Friend" EntitySet="Friend" />
+            <End Role="FriendGroup" EntitySet="FriendGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendGroup_Group" Association="KartalGozModel.Store.FK_FriendGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="FriendGroup" EntitySet="FriendGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_Location" Association="KartalGozModel.Store.FK_Meeting_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_User" Association="KartalGozModel.Store.FK_Meeting_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_User1" Association="KartalGozModel.Store.FK_Meeting_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Location" Association="KartalGozModel.Store.FK_User_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFriend_Friend" Association="KartalGozModel.Store.FK_UserFriend_Friend">
+            <End Role="Friend" EntitySet="Friend" />
+            <End Role="UserFriend" EntitySet="UserFriend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFriend_User" Association="KartalGozModel.Store.FK_UserFriend_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFriend" EntitySet="UserFriend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebUser_User" Association="KartalGozModel.Store.FK_WebUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WebUser" EntitySet="WebUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AWBuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Database Version" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="VersionDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseLog">
+          <Key>
+            <PropertyRef Name="DatabaseLogID" />
+          </Key>
+          <Property Name="DatabaseLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PostTime" Type="datetime" Nullable="false" />
+          <Property Name="DatabaseUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Event" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Schema" Type="nvarchar" MaxLength="128" />
+          <Property Name="Object" Type="nvarchar" MaxLength="128" />
+          <Property Name="TSQL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="XmlEvent" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorTime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ErrorNumber" Type="int" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorProcedure" Type="nvarchar" MaxLength="126" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacebookUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FacebookID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="E-Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="BirthDay" Type="datetime" Nullable="false" />
+          <Property Name="Notification" Type="varchar" MaxLength="2000" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="FriendID" />
+          </Key>
+          <Property Name="FriendID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FriendGroup">
+          <Key>
+            <PropertyRef Name="FriendGroupID" />
+          </Key>
+          <Property Name="FriendGroupID" Type="int" Nullable="false" />
+          <Property Name="FriendID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="FromWhere" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longtitude" Type="float" Nullable="false" />
+          <Property Name="LatLong" Type="float" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LocationHistory">
+          <Key>
+            <PropertyRef Name="LocationHistoryID" />
+          </Key>
+          <Property Name="LocationHistoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="FacebookID" Type="bigint" />
+          <Property Name="MeetingID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="uniqueidentifier" />
+          <Property Name="E-Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="UserModifiedDate" Type="datetime" />
+          <Property Name="StarDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longtitude" Type="float" />
+          <Property Name="LatLong" Type="float" />
+          <Property Name="Address" Type="nvarchar" />
+          <Property Name="LocationModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="MeetingID" />
+          </Key>
+          <Property Name="MeetingID" Type="int" Nullable="false" />
+          <Property Name="Owner" Type="int" Nullable="false" />
+          <Property Name="Location" Type="int" Nullable="false" />
+          <Property Name="Participants" Type="int" Nullable="false" />
+          <Property Name="MeetingDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFriend">
+          <Key>
+            <PropertyRef Name="UserFriendID" />
+          </Key>
+          <Property Name="UserFriendID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FriendID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="WebUserID" />
+          </Key>
+          <Property Name="WebUserID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="E-Mail" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="BirthDay" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_FacebookUser_User">
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="1" />
+          <End Role="FacebookUser" Type="KartalGozModel.Store.FacebookUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacebookUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendGroup_Friend">
+          <End Role="Friend" Type="KartalGozModel.Store.Friend" Multiplicity="1" />
+          <End Role="FriendGroup" Type="KartalGozModel.Store.FriendGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Friend">
+              <PropertyRef Name="FriendID" />
+            </Principal>
+            <Dependent Role="FriendGroup">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendGroup_Group">
+          <End Role="Group" Type="KartalGozModel.Store.Group" Multiplicity="1" />
+          <End Role="FriendGroup" Type="KartalGozModel.Store.FriendGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="FriendGroup">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_Location">
+          <End Role="Location" Type="KartalGozModel.Store.Location" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Store.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_User">
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Store.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_User1">
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Store.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Participants" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Location">
+          <End Role="Location" Type="KartalGozModel.Store.Location" Multiplicity="1" />
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFriend_Friend">
+          <End Role="Friend" Type="KartalGozModel.Store.Friend" Multiplicity="1" />
+          <End Role="UserFriend" Type="KartalGozModel.Store.UserFriend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Friend">
+              <PropertyRef Name="FriendID" />
+            </Principal>
+            <Dependent Role="UserFriend">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFriend_User">
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="1" />
+          <End Role="UserFriend" Type="KartalGozModel.Store.UserFriend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFriend">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebUser_User">
+          <End Role="User" Type="KartalGozModel.Store.User" Multiplicity="1" />
+          <End Role="WebUser" Type="KartalGozModel.Store.WebUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WebUser">
+              <PropertyRef Name="WebUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KartalGozModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="KartalGozEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AWBuildVersion" EntityType="KartalGozModel.AWBuildVersion" />
+          <EntitySet Name="DatabaseLog" EntityType="KartalGozModel.DatabaseLog" />
+          <EntitySet Name="ErrorLog" EntityType="KartalGozModel.ErrorLog" />
+          <EntitySet Name="FacebookUser" EntityType="KartalGozModel.FacebookUser" />
+          <EntitySet Name="Friend" EntityType="KartalGozModel.Friend" />
+          <EntitySet Name="FriendGroup" EntityType="KartalGozModel.FriendGroup" />
+          <EntitySet Name="Group" EntityType="KartalGozModel.Group" />
+          <EntitySet Name="Location" EntityType="KartalGozModel.Location" />
+          <EntitySet Name="LocationHistory" EntityType="KartalGozModel.LocationHistory" />
+          <EntitySet Name="Meeting" EntityType="KartalGozModel.Meeting" />
+          <EntitySet Name="sysdiagrams" EntityType="KartalGozModel.sysdiagrams" />
+          <EntitySet Name="User" EntityType="KartalGozModel.User" />
+          <EntitySet Name="UserFriend" EntityType="KartalGozModel.UserFriend" />
+          <EntitySet Name="WebUser" EntityType="KartalGozModel.WebUser" />
+          <AssociationSet Name="FK_FacebookUser_User" Association="KartalGozModel.FK_FacebookUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FacebookUser" EntitySet="FacebookUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendGroup_Friend" Association="KartalGozModel.FK_FriendGroup_Friend">
+            <End Role="Friend" EntitySet="Friend" />
+            <End Role="FriendGroup" EntitySet="FriendGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFriend_Friend" Association="KartalGozModel.FK_UserFriend_Friend">
+            <End Role="Friend" EntitySet="Friend" />
+            <End Role="UserFriend" EntitySet="UserFriend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendGroup_Group" Association="KartalGozModel.FK_FriendGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="FriendGroup" EntitySet="FriendGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_Location" Association="KartalGozModel.FK_Meeting_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Location" Association="KartalGozModel.FK_User_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_User" Association="KartalGozModel.FK_Meeting_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meeting_User1" Association="KartalGozModel.FK_Meeting_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Meeting" EntitySet="Meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFriend_User" Association="KartalGozModel.FK_UserFriend_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFriend" EntitySet="UserFriend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebUser_User" Association="KartalGozModel.FK_WebUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WebUser" EntitySet="WebUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AWBuildVersion">
+          <Key>
+            <PropertyRef Name="SystemInformationID" />
+          </Key>
+          <Property Name="SystemInformationID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Database_Version" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="VersionDate" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseLog">
+          <Key>
+            <PropertyRef Name="DatabaseLogID" />
+          </Key>
+          <Property Name="DatabaseLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTime" Type="DateTime" Nullable="false" />
+          <Property Name="DatabaseUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Event" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Schema" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Object" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="TSQL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="XmlEvent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorTime" Type="DateTime" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ErrorNumber" Type="Int32" Nullable="false" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorProcedure" Type="String" MaxLength="126" Unicode="true" FixedLength="false" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FacebookUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FacebookID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="E_Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" />
+          <Property Name="Notification" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="User" Relationship="KartalGozModel.FK_FacebookUser_User" FromRole="FacebookUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="FriendID" />
+          </Key>
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="FriendGroup" Relationship="KartalGozModel.FK_FriendGroup_Friend" FromRole="Friend" ToRole="FriendGroup" />
+          <NavigationProperty Name="UserFriend" Relationship="KartalGozModel.FK_UserFriend_Friend" FromRole="Friend" ToRole="UserFriend" />
+        </EntityType>
+        <EntityType Name="FriendGroup">
+          <Key>
+            <PropertyRef Name="FriendGroupID" />
+          </Key>
+          <Property Name="FriendGroupID" Type="Int32" Nullable="false" />
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Friend" Relationship="KartalGozModel.FK_FriendGroup_Friend" FromRole="FriendGroup" ToRole="Friend" />
+          <NavigationProperty Name="Group" Relationship="KartalGozModel.FK_FriendGroup_Group" FromRole="FriendGroup" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="FromWhere" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="FriendGroup" Relationship="KartalGozModel.FK_FriendGroup_Group" FromRole="Group" ToRole="FriendGroup" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longtitude" Type="Double" Nullable="false" />
+          <Property Name="LatLong" Type="Double" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="Meeting" Relationship="KartalGozModel.FK_Meeting_Location" FromRole="Location" ToRole="Meeting" />
+          <NavigationProperty Name="User" Relationship="KartalGozModel.FK_User_Location" FromRole="Location" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LocationHistory">
+          <Key>
+            <PropertyRef Name="LocationHistoryID" />
+          </Key>
+          <Property Name="LocationHistoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="FacebookID" Type="Int64" />
+          <Property Name="MeetingID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="Guid" />
+          <Property Name="E_Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="BirthDay" Type="DateTime" />
+          <Property Name="UserModifiedDate" Type="DateTime" />
+          <Property Name="StarDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longtitude" Type="Double" />
+          <Property Name="LatLong" Type="Double" />
+          <Property Name="Address" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="LocationModifiedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="MeetingID" />
+          </Key>
+          <Property Name="MeetingID" Type="Int32" Nullable="false" />
+          <Property Name="Owner" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="Int32" Nullable="false" />
+          <Property Name="Participants" Type="Int32" Nullable="false" />
+          <Property Name="MeetingDate" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="Location1" Relationship="KartalGozModel.FK_Meeting_Location" FromRole="Meeting" ToRole="Location" />
+          <NavigationProperty Name="User" Relationship="KartalGozModel.FK_Meeting_User" FromRole="Meeting" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="KartalGozModel.FK_Meeting_User1" FromRole="Meeting" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FacebookUser" Relationship="KartalGozModel.FK_FacebookUser_User" FromRole="User" ToRole="FacebookUser" />
+          <NavigationProperty Name="Location" Relationship="KartalGozModel.FK_User_Location" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Meeting" Relationship="KartalGozModel.FK_Meeting_User" FromRole="User" ToRole="Meeting" />
+          <NavigationProperty Name="Meeting1" Relationship="KartalGozModel.FK_Meeting_User1" FromRole="User" ToRole="Meeting" />
+          <NavigationProperty Name="UserFriend" Relationship="KartalGozModel.FK_UserFriend_User" FromRole="User" ToRole="UserFriend" />
+          <NavigationProperty Name="WebUser" Relationship="KartalGozModel.FK_WebUser_User" FromRole="User" ToRole="WebUser" />
+        </EntityType>
+        <EntityType Name="UserFriend">
+          <Key>
+            <PropertyRef Name="UserFriendID" />
+          </Key>
+          <Property Name="UserFriendID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Friend" Relationship="KartalGozModel.FK_UserFriend_Friend" FromRole="UserFriend" ToRole="Friend" />
+          <NavigationProperty Name="User" Relationship="KartalGozModel.FK_UserFriend_User" FromRole="UserFriend" ToRole="User" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="WebUserID" />
+          </Key>
+          <Property Name="WebUserID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="E_Mail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <NavigationProperty Name="User" Relationship="KartalGozModel.FK_WebUser_User" FromRole="WebUser" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_FacebookUser_User">
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="1" />
+          <End Role="FacebookUser" Type="KartalGozModel.FacebookUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FacebookUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendGroup_Friend">
+          <End Role="Friend" Type="KartalGozModel.Friend" Multiplicity="1" />
+          <End Role="FriendGroup" Type="KartalGozModel.FriendGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Friend">
+              <PropertyRef Name="FriendID" />
+            </Principal>
+            <Dependent Role="FriendGroup">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFriend_Friend">
+          <End Role="Friend" Type="KartalGozModel.Friend" Multiplicity="1" />
+          <End Role="UserFriend" Type="KartalGozModel.UserFriend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Friend">
+              <PropertyRef Name="FriendID" />
+            </Principal>
+            <Dependent Role="UserFriend">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendGroup_Group">
+          <End Role="Group" Type="KartalGozModel.Group" Multiplicity="1" />
+          <End Role="FriendGroup" Type="KartalGozModel.FriendGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="FriendGroup">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_Location">
+          <End Role="Location" Type="KartalGozModel.Location" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Location">
+          <End Role="Location" Type="KartalGozModel.Location" Multiplicity="1" />
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_User">
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meeting_User1">
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="1" />
+          <End Role="Meeting" Type="KartalGozModel.Meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Meeting">
+              <PropertyRef Name="Participants" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFriend_User">
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="1" />
+          <End Role="UserFriend" Type="KartalGozModel.UserFriend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserFriend">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebUser_User">
+          <End Role="User" Type="KartalGozModel.User" Multiplicity="1" />
+          <End Role="WebUser" Type="KartalGozModel.WebUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WebUser">
+              <PropertyRef Name="WebUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KartalGozModelStoreContainer" CdmEntityContainer="KartalGozEntities">
+          <EntitySetMapping Name="AWBuildVersion"><EntityTypeMapping TypeName="KartalGozModel.AWBuildVersion"><MappingFragment StoreEntitySet="AWBuildVersion">
+            <ScalarProperty Name="SystemInformationID" ColumnName="SystemInformationID" />
+            <ScalarProperty Name="Database_Version" ColumnName="Database Version" />
+            <ScalarProperty Name="VersionDate" ColumnName="VersionDate" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DatabaseLog"><EntityTypeMapping TypeName="KartalGozModel.DatabaseLog"><MappingFragment StoreEntitySet="DatabaseLog">
+            <ScalarProperty Name="DatabaseLogID" ColumnName="DatabaseLogID" />
+            <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+            <ScalarProperty Name="DatabaseUser" ColumnName="DatabaseUser" />
+            <ScalarProperty Name="Event" ColumnName="Event" />
+            <ScalarProperty Name="Schema" ColumnName="Schema" />
+            <ScalarProperty Name="Object" ColumnName="Object" />
+            <ScalarProperty Name="TSQL" ColumnName="TSQL" />
+            <ScalarProperty Name="XmlEvent" ColumnName="XmlEvent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ErrorLog"><EntityTypeMapping TypeName="KartalGozModel.ErrorLog"><MappingFragment StoreEntitySet="ErrorLog">
+            <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+            <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+            <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+            <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+            <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+            <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+            <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FacebookUser"><EntityTypeMapping TypeName="KartalGozModel.FacebookUser"><MappingFragment StoreEntitySet="FacebookUser">
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+            <ScalarProperty Name="Sex" ColumnName="Sex" />
+            <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+            <ScalarProperty Name="Notification" ColumnName="Notification" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Friend"><EntityTypeMapping TypeName="KartalGozModel.Friend"><MappingFragment StoreEntitySet="Friend">
+            <ScalarProperty Name="FriendID" ColumnName="FriendID" />
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FriendGroup"><EntityTypeMapping TypeName="KartalGozModel.FriendGroup"><MappingFragment StoreEntitySet="FriendGroup">
+            <ScalarProperty Name="FriendGroupID" ColumnName="FriendGroupID" />
+            <ScalarProperty Name="FriendID" ColumnName="FriendID" />
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Group"><EntityTypeMapping TypeName="KartalGozModel.Group"><MappingFragment StoreEntitySet="Group">
+            <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+            <ScalarProperty Name="FromWhere" ColumnName="FromWhere" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Location"><EntityTypeMapping TypeName="KartalGozModel.Location"><MappingFragment StoreEntitySet="Location">
+            <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+            <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+            <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+            <ScalarProperty Name="LatLong" ColumnName="LatLong" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LocationHistory"><EntityTypeMapping TypeName="KartalGozModel.LocationHistory"><MappingFragment StoreEntitySet="LocationHistory">
+            <ScalarProperty Name="LocationHistoryID" ColumnName="LocationHistoryID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+            <ScalarProperty Name="MeetingID" ColumnName="MeetingID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+            <ScalarProperty Name="Sex" ColumnName="Sex" />
+            <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+            <ScalarProperty Name="UserModifiedDate" ColumnName="UserModifiedDate" />
+            <ScalarProperty Name="StarDate" ColumnName="StarDate" />
+            <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+            <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+            <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+            <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+            <ScalarProperty Name="LatLong" ColumnName="LatLong" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="LocationModifiedDate" ColumnName="LocationModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Meeting"><EntityTypeMapping TypeName="KartalGozModel.Meeting"><MappingFragment StoreEntitySet="Meeting">
+            <ScalarProperty Name="MeetingID" ColumnName="MeetingID" />
+            <ScalarProperty Name="Owner" ColumnName="Owner" />
+            <ScalarProperty Name="Location" ColumnName="Location" />
+            <ScalarProperty Name="Participants" ColumnName="Participants" />
+            <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="KartalGozModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="User"><EntityTypeMapping TypeName="KartalGozModel.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+            <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserFriend"><EntityTypeMapping TypeName="KartalGozModel.UserFriend"><MappingFragment StoreEntitySet="UserFriend">
+            <ScalarProperty Name="UserFriendID" ColumnName="UserFriendID" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="FriendID" ColumnName="FriendID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="WebUser"><EntityTypeMapping TypeName="KartalGozModel.WebUser"><MappingFragment StoreEntitySet="WebUser">
+            <ScalarProperty Name="WebUserID" ColumnName="WebUserID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+            <ScalarProperty Name="Sex" ColumnName="Sex" />
+            <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+            <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="KartalGozFullModel">
+        <EntityTypeShape EntityType="KartalGozModel.AWBuildVersion" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.DatabaseLog" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.ErrorLog" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.FacebookUser" Width="1.5" PointX="5.25" PointY="8.125" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.Friend" Width="1.5" PointX="6" PointY="18.25" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.FriendGroup" Width="1.5" PointX="8.25" PointY="18.25" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.Group" Width="1.5" PointX="6" PointY="21.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.Location" Width="1.5" PointX="0.75" PointY="6.5" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.LocationHistory" Width="1.5" PointX="6.75" PointY="0.75" Height="4.6725065104166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.Meeting" Width="1.5" PointX="8.25" PointY="8.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.User" Width="1.5" PointX="3" PointY="9.875" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.UserFriend" Width="1.5" PointX="8.25" PointY="12.25" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="KartalGozModel.WebUser" Width="1.5" PointX="5.25" PointY="14.5" Height="2.7494921875000049" IsExpanded="true" />
+        <AssociationConnector Association="KartalGozModel.FK_FacebookUser_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.470896809895834" />
+          <ConnectorPoint PointX="5.25" PointY="10.470896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_FriendGroup_Friend" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="19.240143229166666" />
+          <ConnectorPoint PointX="8.25" PointY="19.240143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_UserFriend_Friend" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.15625" PointY="18.25" />
+          <ConnectorPoint PointX="7.15625" PointY="13.240143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="13.240143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_FriendGroup_Group" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="22.268992513020834" />
+          <ConnectorPoint PointX="9" PointY="22.268992513020834" />
+          <ConnectorPoint PointX="9" PointY="20.230286458333332" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_Meeting_Location" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.4276432291666676" />
+          <ConnectorPoint PointX="9" PointY="7.4276432291666676" />
+          <ConnectorPoint PointX="9" PointY="8.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_User_Location" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="9.0571907552083317" />
+          <ConnectorPoint PointX="1.5" PointY="11.249746093750002" />
+          <ConnectorPoint PointX="3" PointY="11.249746093750002" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_Meeting_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.599106572115389" />
+          <ConnectorPoint PointX="4.75" PointY="12.849106572115389" />
+          <ConnectorPoint PointX="4.75" PointY="11.2494921875" />
+          <ConnectorPoint PointX="7.9757692307692309" PointY="11.2494921875" />
+          <ConnectorPoint PointX="8.25" PointY="10.975261418269231" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_Meeting_User1" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.617568110576926" />
+          <ConnectorPoint PointX="4.90625" PointY="13.023818110576926" />
+          <ConnectorPoint PointX="4.90625" PointY="11.3744921875" />
+          <ConnectorPoint PointX="7.9003836153846159" PointY="11.3744921875" />
+          <ConnectorPoint PointX="8.2753836153846159" PointY="10.9994921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_UserFriend_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.393300786057694" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="12.393300786057692" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="12.393300786057694" />
+          <ConnectorPoint PointX="8.25" PointY="12.393300786057694" />
+        </AssociationConnector>
+        <AssociationConnector Association="KartalGozModel.FK_WebUser_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="12.624492187500003" />
+          <ConnectorPoint PointX="3.75" PointY="15.874746093750002" />
+          <ConnectorPoint PointX="5.25" PointY="15.874746093750002" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
